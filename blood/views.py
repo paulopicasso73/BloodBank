@@ -108,7 +108,7 @@ def admin_blood_view(request):
             bloodgroup=bloodForm.cleaned_data['bloodgroup']
             stock=models.Stock.objects.get(bloodgroup=bloodgroup)
             stock.unit=bloodForm.cleaned_data['unit']
-            stock.save()
+            stock.save()               
         return HttpResponseRedirect('admin-blood')
     return render(request,'blood/admin_blood.html',context=dict)
 
@@ -136,7 +136,7 @@ def update_donor_view(request,pk):
             donor.user=user
             donor.bloodgroup=donorForm.cleaned_data['bloodgroup']
             donor.save()
-            return redirect('admin-donor')
+            return redirect('home')
     return render(request,'blood/update_donor.html',context=mydict)
 
 

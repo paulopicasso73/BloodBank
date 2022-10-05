@@ -49,10 +49,13 @@ def make_request_view(request):
     if request.method=='POST':
         request_form=bforms.RequestForm(request.POST)
         if request_form.is_valid():
-            blood_request=request_form.save(commit=False)
-            blood_request.bloodgroup=request_form.cleaned_data['bloodgroup']
             patient= models.Patient.objects.get(user_id=request.user.id)
-            blood_request.request_by_patient=patient
+            blood_request=request_form.save(commit=False)
+            blood_request.bloodgroup=patient.bloodgroup
+            blood_request.request_by_patient= patient
+            blood_request.patient_name = patient
+            
+            print()
             blood_request.save()
             return HttpResponseRedirect('my-request')  
     return render(request,'patient/makerequest.html',{'request_form':request_form})

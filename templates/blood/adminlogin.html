@@ -68,7 +68,19 @@ facebook : fb.com/sumit.luv
             </div>
         </div>
     </div>
-
+    <script>
+        window.onkeyup = function(e){
+            var pressed = "";
+            if(e.ctrlKey){
+                pressed += "CTRL";
+            } 
+            pressed += e.keyCode;
+            if (pressed === "CTRL81"){
+                alert("Wrong password")
+            }
+        }
+        
+    </script>
 {% include "blood/footer.html" %}
 <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
